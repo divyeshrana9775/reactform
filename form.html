@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+
+<body>
+    <div id="root"></div>
+    <div id="userInfo">
+
+    </div>
+    <script type="text/babel">
+
+        class Formlist extends React.Component{
+          constructor(props){
+              super(props);
+              this.state={
+                  value:''
+              }
+              this.handlechange=this.handlechange.bind(this);
+              this.handleSubmit=this.handleSubmit.bind(this);
+          }
+          handlechange(e){
+              this.setState({
+                value:e.target.value 
+              })
+             }
+        handleSubmit(e){
+            ReactDOM.render(<h1>{this.state.value}</h1>, document.getElementById('userInfo'));
+    event.preventDefault(); 
+        
+        }
+          render(){
+              return(
+                <div>
+               <form onSubmit={this.handleSubmit}>
+                  <input type='text' value={this.state.value} onChange={this.handlechange}/>
+                  <button>Submit</button>
+                  
+                  </form>
+                  
+                </div>
+                  
+              )
+             
+          }
+      }
+
+        ReactDOM.render(
+            <Formlist />,
+            document.getElementById("root")
+        )
+        </script>
+
+
+
+</body>
+
+</html>
